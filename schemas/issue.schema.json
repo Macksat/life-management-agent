@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/personal-action-os-template/schemas/issue.schema.json",
+  "title": "Issue",
+  "description": "このテンプレートの Issue を機械可読に表す構造。本文の構造化フィールドと対応する。",
+  "type": "object",
+  "required": [
+    "title",
+    "category",
+    "type",
+    "status",
+    "priority",
+    "goal",
+    "next_action"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "description": "簡潔・具体的。動詞で始まると良い。"
+    },
+    "category": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "category.schema.json#/$defs/categoryValue" },
+      "description": "主たる領域を 1 つ。補助で複数可。"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "task",
+        "idea",
+        "research",
+        "project",
+        "memo",
+        "decision",
+        "habit",
+        "bug",
+        "improvement"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "inbox",
+        "needs-triage",
+        "ready",
+        "in-progress",
+        "waiting",
+        "blocked",
+        "done",
+        "archived"
+      ]
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["P0-critical", "P1-high", "P2-medium", "P3-low"],
+      "default": "P2-medium"
+    },
+    "context": {
+      "type": "string",
+      "description": "背景・なぜ必要か。type:task では理想/現状/問題点/方針で代替できる任意項目。"
+    },
+    "ideal": {
+      "type": "string",
+      "description": "理想 / あるべき状態。type:task で必須。"
+    },
+    "current": {
+      "type": "string",
+      "description": "現状 / 今どうなっているか(事実)。type:task で必須。"
+    },
+    "problem": {
+      "type": "string",
+      "description": "問題点 / 理想と現状のギャップ。type:task で必須。"
+    },
+    "approach": {
+      "type": "string",
+      "description": "方針 / 解決の方向性。type:task で必須。"
+    },
+    "goal": {
+      "type": "string",
+      "description": "達成したい状態。1 文で。"
+    },
+    "next_action": {
+      "type": "string",
+      "minLength": 1,
+      "description": "次の具体的な一手。不明なら 'clarify goal'。"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "done"],
+        "properties": {
+          "text": { "type": "string" },
+          "done": { "type": "boolean", "default": false }
+        },
+        "additionalProperties": false
+      },
+      "description": "検証可能な完了条件のチェックリスト。"
+    },
+    "due_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "YYYY-MM-DD。なければ null。"
+    },
+    "related_links": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    },
+    "related_issues": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^#?[0-9]+$",
+        "description": "例: '#123' または '123'"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "補足・待ち理由・ブロック理由など。"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "ready" } }
+      },
+      "then": {
+        "not": {
+          "properties": { "next_action": { "const": "clarify goal" } }
+        },
+        "description": "ready は具体的な next_action を要する(clarify goal は needs-triage 用)。"
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "task" } },
+        "required": ["type"]
+      },
+      "then": {
+        "required": ["ideal", "current", "problem", "approach"],
+        "description": "type:task は「課題の4点セット」理想/現状/問題点/方針を必須とする。"
+      }
+    }
+  ]
+}

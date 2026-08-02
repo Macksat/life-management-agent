@@ -1,0 +1,28 @@
+name: "📥 Intake — 未整理の思いつき・メモ"
+description: "とりあえず捕まえる。分類は後で AI が triage する。"
+title: "[intake] "
+labels: ["type:memo", "status:inbox"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        雑で OK。1 行でも残せば忘れない。後で issue-triage スキル(.claude/skills/issue-triage/SKILL.md)で整理されます。
+        **機微情報(パスワード/口座/住所/他者の個人情報)は書かないこと。**
+  - type: textarea
+    id: braindump
+    attributes:
+      label: 何を思いついた? / メモ
+      description: 思いついたまま書く。
+      placeholder: 例) LangGraph のチェックポイント、ちゃんと理解できてない気がする
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: 文脈 / なぜ(任意)
+      placeholder: なぜ気になったか、どういう状況か
+  - type: input
+    id: hint_next
+    attributes:
+      label: 次にやりたそうなこと(任意)
+      placeholder: 不明なら空欄でOK(AI が clarify goal にします)

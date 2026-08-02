@@ -1,0 +1,18 @@
+[
+  {
+    "query": "習慣",
+    "index_type": "topics",
+    "expected_any": [
+      "topics/習慣化のコツ.md",
+      "topics/新しい学習方法の模索.md"
+    ]
+  },
+  {
+    "query": "オフィスチェア",
+    "index_type": "projects",
+    "expected_any": [
+      "projects/2-オフィスチェアのナレッジを体系化する.md",
+      "issues/3-オフィスチェアの選び方を整理する.md"
+    ]
+  }
+]

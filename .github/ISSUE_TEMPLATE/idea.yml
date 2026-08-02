@@ -1,0 +1,53 @@
+name: "💡 Idea — アイデア"
+description: "アイデア・着想。育てるか捨てるかを後で判断する。"
+title: "[idea] "
+labels: ["type:idea", "status:needs-triage", "priority:P3-low"]
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: category
+      options:
+        - work
+        - personal-dev
+        - second-brain
+        - learning
+        - career
+        - life-admin
+        - relationship
+        - travel
+        - health
+        - hobby
+        - gadget
+        - thinking
+        - meta-system
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: アイデア(context)
+      description: どんな着想か。なぜ面白い / 価値がありそうか。
+    validations:
+      required: true
+  - type: input
+    id: goal
+    attributes:
+      label: goal(実現したら何が嬉しいか)
+  - type: input
+    id: next_action
+    attributes:
+      label: next_action(検証 / 深掘りの第一歩)
+      description: 例) 30 分で実現可能性を調べる。不明なら "clarify goal"
+    validations:
+      required: true
+  - type: dropdown
+    id: owner
+    attributes:
+      label: owner
+      default: 2
+      options: ["human", "ai", "both"]
+  - type: textarea
+    id: notes
+    attributes:
+      label: notes(任意)

@@ -1,0 +1,176 @@
+name: 📊 Weekly Dashboard
+
+# 毎週日曜 09:00 JST に Issue の統計を集計し、
+# Issue コメントとして投稿する。AI 不使用・機械的な集計のみ。
+
+on:
+  schedule:
+    - cron: "0 0 * * 0" # 毎週日曜 09:00 JST (00:00 UTC)
+  workflow_dispatch: # 手動実行も可能
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  dashboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate weekly dashboard
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          TODAY=$(date -u +%Y-%m-%d)
+          WEEK_AGO=$(date -u -d "7 days ago" +%Y-%m-%dT00:00:00Z)
+          NOW_ISO=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+
+          # ── データ収集 ──
+
+          # 全 Open Issue
+          OPEN_JSON=$(gh issue list --repo "$REPO" --state open --json number,title,labels,createdAt,updatedAt,comments --limit 200)
+          OPEN_COUNT=$(echo "$OPEN_JSON" | jq 'length')
+
+          # 今週 Close された Issue
+          CLOSED_JSON=$(gh issue list --repo "$REPO" --state closed --json number,title,labels,closedAt --limit 200 \
+            | jq --arg since "$WEEK_AGO" '[.[] | select(.closedAt >= $since)]')
+          CLOSED_COUNT=$(echo "$CLOSED_JSON" | jq 'length')
+
+          # 今週作成された Issue
+          NEW_JSON=$(echo "$OPEN_JSON" | jq --arg since "$WEEK_AGO" '[.[] | select(.createdAt >= $since)]')
+          NEW_COUNT=$(echo "$NEW_JSON" | jq 'length')
+
+          # ── Status 別集計 ──
+          status_count() {
+            echo "$OPEN_JSON" | jq --arg s "$1" '[.[] | select(.labels[]?.name == $s)] | length'
+          }
+          S_INBOX=$(status_count "status:inbox")
+          S_TRIAGE=$(status_count "status:needs-triage")
+          S_READY=$(status_count "status:ready")
+          S_PROGRESS=$(status_count "status:in-progress")
+          S_WAITING=$(status_count "status:waiting")
+          S_BLOCKED=$(status_count "status:blocked")
+
+          # ── Priority 別集計 ──
+          priority_count() {
+            echo "$OPEN_JSON" | jq --arg p "$1" '[.[] | select(.labels[]?.name == $p)] | length'
+          }
+          P0=$(priority_count "priority:P0-critical")
+          P1=$(priority_count "priority:P1-high")
+          P2=$(priority_count "priority:P2-medium")
+          P3=$(priority_count "priority:P3-low")
+
+          # ── Category 別集計 ──
+          CATEGORY_TABLE=$(echo "$OPEN_JSON" | jq -r '
+            [.[].labels[]?.name | select(startswith("category:"))]
+            | group_by(.) | map({name: .[0], count: length})
+            | sort_by(-.count)[]
+            | "| \(.name | sub("category:"; "")) | \(.count) |"
+          ')
+
+          # ── 滞留 Issue（7日以上更新なし & status:ready） ──
+          STALE_LIST=$(echo "$OPEN_JSON" | jq -r --arg since "$WEEK_AGO" '
+            [.[] | select(
+              .updatedAt < $since and
+              (.labels[]?.name == "status:ready")
+            )]
+            | sort_by(.updatedAt)[]
+            | "| #\(.number) | \(.title[:40]) | \(.updatedAt[:10]) |"
+          ')
+          STALE_COUNT=$(echo "$OPEN_JSON" | jq --arg since "$WEEK_AGO" '
+            [.[] | select(.updatedAt < $since and (.labels[]?.name == "status:ready"))] | length
+          ')
+
+          # ── 期限間近（7日以内）── Issue body から due_date を取るのは困難なため、
+          #    Projects の Due Date フィールドがある Issue は別途表示
+          #    ここでは title/label ベースで検出可能なもののみ
+
+          # ── 今週 Close された Issue リスト ──
+          CLOSED_LIST=$(echo "$CLOSED_JSON" | jq -r '
+            .[] | "- [x] #\(.number) \(.title[:50])"
+          ')
+          [ -z "$CLOSED_LIST" ] && CLOSED_LIST="_(なし)_"
+
+          # ── 今週作成された Issue リスト ──
+          NEW_LIST=$(echo "$NEW_JSON" | jq -r '
+            .[] | "- #\(.number) \(.title[:50])"
+          ')
+          [ -z "$NEW_LIST" ] && NEW_LIST="_(なし)_"
+
+          # ── レポート生成 ──
+          REPORT=$(cat <<EOF
+          ## 📊 Weekly Dashboard — $TODAY
+
+          ### サマリー
+          | 指標 | 件数 |
+          |------|------|
+          | Open 合計 | $OPEN_COUNT |
+          | 今週 Close | $CLOSED_COUNT |
+          | 今週 新規 | $NEW_COUNT |
+          | 滞留（7日超 & Ready） | $STALE_COUNT |
+
+          ### Status 別
+          | Status | 件数 |
+          |--------|------|
+          | Inbox | $S_INBOX |
+          | Triage | $S_TRIAGE |
+          | Ready | $S_READY |
+          | In Progress | $S_PROGRESS |
+          | Waiting | $S_WAITING |
+          | Blocked | $S_BLOCKED |
+
+          ### Priority 別
+          | Priority | 件数 |
+          |----------|------|
+          | 🔴 P0-critical | $P0 |
+          | 🟠 P1-high | $P1 |
+          | 🟡 P2-medium | $P2 |
+          | 🟢 P3-low | $P3 |
+
+          ### Category 別
+          | Category | 件数 |
+          |----------|------|
+          $CATEGORY_TABLE
+
+          ### 今週 Close した Issue
+          $CLOSED_LIST
+
+          ### 今週作成された Issue
+          $NEW_LIST
+
+          ### ⚠️ 滞留 Issue（Ready のまま 7 日超更新なし）
+          | Issue | タイトル | 最終更新 |
+          |-------|---------|----------|
+          $STALE_LIST
+
+          ---
+          _🤖 Generated by GitHub Actions ([workflow](https://github.com/$REPO/actions/workflows/weekly-dashboard.yml))_
+          EOF
+          )
+
+          # ── 投稿先 Issue を検索 or 作成 ──
+          DASHBOARD_ISSUE=$(gh issue list --repo "$REPO" \
+            --label "type:habit,category:meta-system" \
+            --state open --json number,title \
+            -q '.[] | select(.title | test("Weekly Dashboard")) | .number' \
+            | head -1)
+
+          if [ -z "$DASHBOARD_ISSUE" ]; then
+            # 初回: ダッシュボード Issue を作成
+            DASHBOARD_ISSUE=$(gh issue create --repo "$REPO" \
+              --title "[Weekly] Dashboard — Issue 統計レポート" \
+              --body "毎週日曜に GitHub Actions が自動集計した Issue 統計をコメントに投稿します。" \
+              --label "type:habit,category:meta-system,priority:P2-medium,status:ready" \
+              | grep -oP '\d+$')
+            echo "📝 Created dashboard Issue #$DASHBOARD_ISSUE"
+          fi
+
+          # コメントとして投稿
+          gh issue comment "$DASHBOARD_ISSUE" --repo "$REPO" --body "$REPORT"
+          echo "✅ Posted weekly dashboard to Issue #$DASHBOARD_ISSUE"

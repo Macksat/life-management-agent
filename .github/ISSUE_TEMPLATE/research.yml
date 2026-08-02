@@ -1,0 +1,64 @@
+name: "🔎 Research — 調査"
+description: "調べたいこと。最後は decision / task に変換する。"
+title: "[research] "
+labels: ["type:research", "status:ready", "priority:P2-medium"]
+body:
+  - type: markdown
+    attributes:
+      value: "調査は「読んで終わり」にしない。完了時に research-to-action スキル(.claude/skills/research-to-action/SKILL.md)で決定・タスク化する。"
+  - type: dropdown
+    id: category
+    attributes:
+      label: category
+      options:
+        - work
+        - personal-dev
+        - second-brain
+        - learning
+        - career
+        - life-admin
+        - relationship
+        - travel
+        - health
+        - hobby
+        - gadget
+        - thinking
+        - meta-system
+    validations:
+      required: true
+  - type: input
+    id: question
+    attributes:
+      label: 調べたい問い(goal)
+      description: 答えるべき問いを 1 文で。
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: context(なぜ調べるか / どこに使うか)
+    validations:
+      required: true
+  - type: input
+    id: next_action
+    attributes:
+      label: next_action(最初に当たる情報源 / 手順)
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: acceptance_criteria(何が分かれば完了か)
+      value: |
+        - [ ] 問いに答えられる
+        - [ ] 決めること / 次タスクを抽出した
+  - type: dropdown
+    id: owner
+    attributes:
+      label: owner
+      default: 2
+      options: ["human", "ai", "both"]
+  - type: textarea
+    id: related
+    attributes:
+      label: related_links(参考 URL など)

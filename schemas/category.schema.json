@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/personal-action-os-template/schemas/category.schema.json",
+  "title": "Category",
+  "description": "このテンプレートのカテゴリ定義。値の意味は docs/taxonomy.md を参照。",
+  "$defs": {
+    "categoryValue": {
+      "type": "string",
+      "enum": [
+        "work",
+        "personal-dev",
+        "second-brain",
+        "learning",
+        "career",
+        "life-admin",
+        "relationship",
+        "travel",
+        "health",
+        "hobby",
+        "gadget",
+        "thinking",
+        "meta-system"
+      ]
+    }
+  },
+  "type": "object",
+  "required": ["value", "label", "description"],
+  "properties": {
+    "value": { "$ref": "#/$defs/categoryValue" },
+    "label": {
+      "type": "string",
+      "description": "GitHub ラベル名(例: category:work)。",
+      "pattern": "^category:[a-z-]+$"
+    },
+    "description": { "type": "string" },
+    "color": {
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f]{6}$",
+      "description": "ラベル色(HEX, # なし)。"
+    }
+  },
+  "additionalProperties": false
+}

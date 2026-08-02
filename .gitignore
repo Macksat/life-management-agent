@@ -1,0 +1,53 @@
+# --- Secrets / credentials (NEVER commit) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+client_secret*.json
+credentials.json
+token.json
+.credentials/
+.google/
+.gauth/
+.mcp-auth/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# --- Node ---
+node_modules/
+npm-debug.log*
+
+# --- Local agent state (do not commit machine-local config) ---
+.codex/config.local.toml
+even-terminal-*.log
+error.log
+.cache/
+
+# --- Playwright MCP runtime logs/snapshots ---
+.playwright-mcp/
+
+# --- Memory Search index (generated, do not commit) ---
+data/memory_index/*.db
+
+# --- LLMWiki generated caches (rebuildable, do not commit) ---
+data/llm_wiki/indexes/embeddings.npz
+data/llm_wiki/indexes/embeddings_meta.json
+data/llm_wiki/indexes/similarity_cache.json
+data/llm_wiki/indexes/serendipity_cache.json
+
+# --- MCP server binaries (download locally, do not commit) ---
+bin/

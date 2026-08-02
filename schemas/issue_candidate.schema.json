@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/personal-action-os/schemas/issue_candidate.schema.json",
+  "title": "Second Brain Issue Candidate",
+  "description": "second_brain の digest から抽出した GitHub Issue 候補。",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "title",
+    "source_digest_path",
+    "source_digest_title",
+    "candidate_type",
+    "risk_level",
+    "why_issue",
+    "goal",
+    "next_action",
+    "suggested_category",
+    "suggested_priority",
+    "suggested_status"
+  ],
+  "properties": {
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 3 },
+    "source_digest_path": { "type": "string", "minLength": 1 },
+    "source_digest_title": { "type": "string", "minLength": 1 },
+    "source_source_name": { "type": "string" },
+    "source_date": { "type": "string" },
+    "candidate_type": {
+      "type": "string",
+      "enum": ["task", "idea", "research", "project", "memo", "decision", "habit", "bug", "improvement"]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "why_issue": { "type": "string", "minLength": 1 },
+    "goal": { "type": "string", "minLength": 1 },
+    "next_action": { "type": "string", "minLength": 1 },
+    "ideal": { "type": "string" },
+    "current": { "type": "string" },
+    "problem": { "type": "string" },
+    "approach": { "type": "string" },
+    "suggested_category": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "category.schema.json#/$defs/categoryValue" }
+    },
+    "suggested_priority": {
+      "type": "string",
+      "enum": ["P0-critical", "P1-high", "P2-medium", "P3-low"]
+    },
+    "suggested_status": {
+      "type": "string",
+      "enum": ["inbox", "needs-triage", "ready", "in-progress", "waiting", "blocked", "done", "archived"]
+    },
+    "approval_required": { "type": "boolean", "default": true },
+    "dedupe_query": { "type": "string" },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "context": { "type": "string" },
+    "notes": { "type": "string" },
+    "created_issue_number": { "type": "integer" },
+    "created_issue_url": { "type": "string" }
+  },
+  "additionalProperties": false
+}

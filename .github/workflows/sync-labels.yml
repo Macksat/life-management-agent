@@ -1,0 +1,32 @@
+name: Sync Labels
+
+# .github/labels.yml の定義を GitHub ラベルへ同期する。
+# 手動実行、または labels.yml の変更を main に push したとき実行。
+# 正本は docs/labels.md。値を変えるときは両方更新すること。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/labels.yml"
+      - ".github/workflows/sync-labels.yml"
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sync labels from .github/labels.yml
+        uses: micnncim/action-label-syncer@v1
+        with:
+          manifest: .github/labels.yml
+          # prune: true にすると定義外ラベルを削除します。
+          # 既存ラベルを誤って消さないよう、まずは false で運用。
+          prune: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

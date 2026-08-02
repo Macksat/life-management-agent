@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 運用ルール (AGENTS.md)
+    url: https://github.com/<your-github-username>/<your-repo-name>/blob/main/AGENTS.md
+    about: AI エージェントの動き方・Issue 作成基準はこちら。
+  - name: 分類体系 (taxonomy.md)
+    url: https://github.com/<your-github-username>/<your-repo-name>/blob/main/docs/taxonomy.md
+    about: category / type / status / priority / owner の定義。

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "scripts/github-mcp.sh"
+    },
+    "google-workspace": {
+      "command": "scripts/google-workspace-mcp.sh"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"]
+    }
+  }
+}

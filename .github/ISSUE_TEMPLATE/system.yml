@@ -1,0 +1,60 @@
+name: "⚙️ System — リポジトリ / AI 運用の改善"
+description: "このリポジトリ自体や AI 運用ルール・テンプレート・スキルの改善。"
+title: "[system] "
+labels: ["category:meta-system", "type:improvement", "status:ready", "priority:P2-medium"]
+body:
+  - type: markdown
+    attributes:
+      value: "ハーネス(ルール/テンプレート/スキル/eval/schema)の改善はここ。ラベル定義の変更提案も。"
+  - type: dropdown
+    id: area
+    attributes:
+      label: 対象エリア
+      options:
+        - AGENTS.md / CLAUDE.md / CODEX.md
+        - docs
+        - skills
+        - evals
+        - schemas
+        - ISSUE_TEMPLATE
+        - labels
+        - workflows (Actions)
+        - その他
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 課題 / 改善したい点(context)
+    validations:
+      required: true
+  - type: input
+    id: goal
+    attributes:
+      label: goal(改善後の状態)
+    validations:
+      required: true
+  - type: input
+    id: next_action
+    attributes:
+      label: next_action(最初の一手)
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: acceptance_criteria
+      value: |
+        - [ ]
+  - type: dropdown
+    id: priority
+    attributes:
+      label: priority
+      default: 2
+      options: ["P0-critical", "P1-high", "P2-medium", "P3-low"]
+  - type: dropdown
+    id: owner
+    attributes:
+      label: owner
+      default: 2
+      options: ["human", "ai", "both"]

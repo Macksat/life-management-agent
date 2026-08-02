@@ -1,0 +1,52 @@
+name: "📚 Learning — 学習"
+description: "学びたいこと・スキル習得。"
+title: "[learning] "
+labels: ["category:learning", "type:task", "status:ready", "priority:P2-medium"]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: 学習テーマ
+      placeholder: 例) LangGraph のチェックポイント機構
+    validations:
+      required: true
+  - type: input
+    id: goal
+    attributes:
+      label: goal(できるようになりたい状態)
+      description: 「〜を説明できる」「〜を実装できる」など検証可能に。
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: context(なぜ学ぶか / どこで使うか)
+  - type: input
+    id: next_action
+    attributes:
+      label: next_action(最初の学習ステップ)
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: acceptance_criteria(習得の確認方法)
+      value: |
+        - [ ] 要点を自分の言葉で説明できる
+        - [ ] 最小サンプルを動かした
+  - type: dropdown
+    id: priority
+    attributes:
+      label: priority
+      default: 2
+      options: ["P0-critical", "P1-high", "P2-medium", "P3-low"]
+  - type: dropdown
+    id: owner
+    attributes:
+      label: owner
+      default: 2
+      options: ["human", "ai", "both"]
+  - type: textarea
+    id: related
+    attributes:
+      label: related_links(教材 / 参考)

@@ -1,0 +1,80 @@
+name: "📦 Project — 複数タスクを含むプロジェクト"
+description: "複数タスク・マイルストーンを持つまとまり。子 Issue に分解する。"
+title: "[project] "
+labels: ["type:project", "status:ready", "priority:P2-medium"]
+body:
+  - type: markdown
+    attributes:
+      value: "task-breakdown スキル(.claude/skills/task-breakdown/SKILL.md)でマイルストーン → 子タスクに分解する。"
+  - type: dropdown
+    id: category
+    attributes:
+      label: category
+      options:
+        - work
+        - personal-dev
+        - second-brain
+        - learning
+        - career
+        - life-admin
+        - relationship
+        - travel
+        - health
+        - hobby
+        - gadget
+        - thinking
+        - meta-system
+    validations:
+      required: true
+  - type: input
+    id: goal
+    attributes:
+      label: goal(プロジェクトの達成状態 / 1 文)
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: context(背景・なぜやるか)
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: scope(やること / やらないこと)
+      value: |
+        やる:
+        -
+        やらない:
+        -
+  - type: textarea
+    id: milestones
+    attributes:
+      label: milestones(中間成果 2〜5 個)
+      value: |
+        - [ ] M1:
+        - [ ] M2:
+  - type: textarea
+    id: tasks
+    attributes:
+      label: tasks(子 Issue リスト)
+      value: |
+        - [ ] #
+  - type: input
+    id: next_action
+    attributes:
+      label: next_action(最初の一手)
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: priority
+      default: 2
+      options: ["P0-critical", "P1-high", "P2-medium", "P3-low"]
+  - type: dropdown
+    id: owner
+    attributes:
+      label: owner
+      default: 2
+      options: ["human", "ai", "both"]

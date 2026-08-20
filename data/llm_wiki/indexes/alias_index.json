@@ -1,0 +1,99 @@
+{
+  "self facts": [
+    "people_self/facts.md"
+  ],
+  "people-self-facts": [
+    "people_self/facts.md"
+  ],
+  "facts": [
+    "people_self/facts.md"
+  ],
+  "個人的事実": [
+    "people_self/facts.md"
+  ],
+  "self": [
+    "people_self/facts.md",
+    "people_self/preferences.md",
+    "people_self/user_context.md"
+  ],
+  "self preferences": [
+    "people_self/preferences.md"
+  ],
+  "people-self-preferences": [
+    "people_self/preferences.md"
+  ],
+  "preferences": [
+    "people_self/preferences.md"
+  ],
+  "好み": [
+    "people_self/preferences.md"
+  ],
+  "self context": [
+    "people_self/user_context.md"
+  ],
+  "people-self-user-context": [
+    "people_self/user_context.md"
+  ],
+  "user_context": [
+    "people_self/user_context.md"
+  ],
+  "文脈": [
+    "people_self/user_context.md"
+  ],
+  "design notes": [
+    "topics/design-notes.md"
+  ],
+  "topic-design-notes": [
+    "topics/design-notes.md"
+  ],
+  "design": [
+    "topics/design-notes.md"
+  ],
+  "notes": [
+    "topics/design-notes.md"
+  ],
+  "呼称": [
+    "topics/呼称.md"
+  ],
+  "topic-呼称": [
+    "topics/呼称.md"
+  ],
+  "変更履歴": [
+    "topics/変更履歴.md"
+  ],
+  "topic-変更履歴": [
+    "topics/変更履歴.md"
+  ],
+  "topics index": [
+    "topics/_index.md"
+  ],
+  "index-topics": [
+    "topics/_index.md"
+  ],
+  "topics": [
+    "topics/_index.md"
+  ],
+  "index": [
+    "topics/_index.md",
+    "people_self/_index.md",
+    "timelines/_index.md"
+  ],
+  "people self index": [
+    "people_self/_index.md"
+  ],
+  "index-people_self": [
+    "people_self/_index.md"
+  ],
+  "people_self": [
+    "people_self/_index.md"
+  ],
+  "timelines index": [
+    "timelines/_index.md"
+  ],
+  "index-timelines": [
+    "timelines/_index.md"
+  ],
+  "timelines": [
+    "timelines/_index.md"
+  ]
+}

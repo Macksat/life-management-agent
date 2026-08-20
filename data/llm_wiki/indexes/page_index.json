@@ -1,0 +1,382 @@
+[
+  {
+    "page_id": "people-self-facts",
+    "page_type": "people_self",
+    "title": "Self Facts",
+    "path": "people_self/facts.md",
+    "summary": "ここには長期で参照価値がある個人的事実だけを追加する / このリポジトリ(life-management-agent / Personal Action OS)を「personal hub」と呼ぶ (2026-08-20 観察) / 2026-08-20: 「呼称」セクションを追加し、リポジトリの呼称(personal hub)を記録",
+    "tags": [
+      "facts",
+      "self"
+    ],
+    "aliases": [
+      "facts",
+      "個人的事実"
+    ],
+    "links": [],
+    "source_refs": [
+      {
+        "source_type": "memories",
+        "source_path": "data/llm_wiki/sources/memories/facts.md",
+        "anchor": "facts/"
+      },
+      {
+        "source_type": "memories",
+        "source_path": "data/llm_wiki/sources/memories/facts.md",
+        "anchor": "呼称"
+      },
+      {
+        "source_type": "memories",
+        "source_path": "data/llm_wiki/sources/memories/facts.md",
+        "anchor": "変更履歴"
+      }
+    ],
+    "metadata": {
+      "memory_type": "facts",
+      "record_count": 3
+    },
+    "key_facts": [
+      "ここには長期で参照価値がある個人的事実だけを追加する",
+      "このリポジトリ(life-management-agent / Personal Action OS)を「personal hub」と呼ぶ (2026-08-20 観察)",
+      "2026-08-20: 「呼称」セクションを追加し、リポジトリの呼称(personal hub)を記録"
+    ],
+    "open_questions": []
+  },
+  {
+    "page_id": "people-self-preferences",
+    "page_type": "people_self",
+    "title": "Self Preferences",
+    "path": "people_self/preferences.md",
+    "summary": "箇条書きや短い段落を好む / 推測より事実ベースを優先する / このファイルには長期で効く対話スタイルや好みだけを残す",
+    "tags": [
+      "preferences",
+      "self"
+    ],
+    "aliases": [
+      "preferences",
+      "好み"
+    ],
+    "links": [],
+    "source_refs": [
+      {
+        "source_type": "memories",
+        "source_path": "data/llm_wiki/sources/memories/preferences.md",
+        "anchor": "preferences/"
+      }
+    ],
+    "metadata": {
+      "memory_type": "preferences",
+      "record_count": 3
+    },
+    "key_facts": [
+      "箇条書きや短い段落を好む",
+      "推測より事実ベースを優先する",
+      "このファイルには長期で効く対話スタイルや好みだけを残す"
+    ],
+    "open_questions": []
+  },
+  {
+    "page_id": "people-self-user-context",
+    "page_type": "people_self",
+    "title": "Self Context",
+    "path": "people_self/user_context.md",
+    "summary": "役割: / 主な関心: / 使用中のツール:",
+    "tags": [
+      "user_context",
+      "self"
+    ],
+    "aliases": [
+      "user_context",
+      "文脈"
+    ],
+    "links": [],
+    "source_refs": [
+      {
+        "source_type": "memories",
+        "source_path": "data/llm_wiki/sources/memories/user_context.md",
+        "anchor": "user_context/"
+      }
+    ],
+    "metadata": {
+      "memory_type": "user_context",
+      "record_count": 4
+    },
+    "key_facts": [
+      "役割:",
+      "主な関心:",
+      "使用中のツール:",
+      "相談したいテーマ:"
+    ],
+    "open_questions": []
+  },
+  {
+    "page_id": "topic-design-notes",
+    "page_type": "topics",
+    "title": "Design notes",
+    "path": "topics/design-notes.md",
+    "summary": "AI と人間の役割分担を明確にしたテンプレート構造にすると、運用の判断負荷が下がる。",
+    "tags": [
+      "design",
+      "notes"
+    ],
+    "aliases": [
+      "Design notes"
+    ],
+    "links": [
+      {
+        "relation": "derived_from",
+        "target_page_id": "data/llm_wiki/sources/second_brain/digests/2026-01-01_design-notes.md",
+        "target_path": "data/llm_wiki/sources/second_brain/digests/2026-01-01_design-notes.md",
+        "confidence": 1.0,
+        "source": "source_ref"
+      }
+    ],
+    "source_refs": [
+      {
+        "source_type": "second_brain",
+        "source_path": "data/llm_wiki/sources/second_brain/digests/2026-01-01_design-notes.md",
+        "anchor": "Design notes"
+      }
+    ],
+    "metadata": {
+      "record_count": 1,
+      "source_layers": [
+        "second_brain"
+      ],
+      "canonical_title": "Design notes"
+    },
+    "key_facts": [
+      "AI と人間の役割分担を明確にしたテンプレート構造にすると、運用の判断負荷が下がる。"
+    ],
+    "open_questions": []
+  },
+  {
+    "page_id": "topic-呼称",
+    "page_type": "topics",
+    "title": "呼称",
+    "path": "topics/呼称.md",
+    "summary": "このリポジトリ(life-management-agent / Personal Action OS)を「personal hub」と呼ぶ (2026-08-20 観察)",
+    "tags": [
+      "呼称"
+    ],
+    "aliases": [
+      "呼称"
+    ],
+    "links": [
+      {
+        "relation": "relates_to",
+        "target_page_id": "people-self-facts",
+        "target_path": "people_self/facts.md",
+        "confidence": 0.95,
+        "source": "token_overlap:action,agent,hub」と呼ぶ,life"
+      },
+      {
+        "relation": "derived_from",
+        "target_page_id": "data/llm_wiki/sources/memories/facts.md",
+        "target_path": "data/llm_wiki/sources/memories/facts.md",
+        "confidence": 1.0,
+        "source": "source_ref"
+      },
+      {
+        "relation": "relates_to_topic",
+        "target_page_id": "topic-変更履歴",
+        "target_path": "topics/変更履歴.md",
+        "confidence": 1.0,
+        "source": "shared_source:data/llm_wiki/sources/memories/facts.md"
+      }
+    ],
+    "source_refs": [
+      {
+        "source_type": "memories",
+        "source_path": "data/llm_wiki/sources/memories/facts.md",
+        "anchor": "呼称"
+      }
+    ],
+    "metadata": {
+      "record_count": 1,
+      "source_layers": [
+        "memories"
+      ],
+      "canonical_title": "呼称"
+    },
+    "key_facts": [
+      "このリポジトリ(life-management-agent / Personal Action OS)を「personal hub」と呼ぶ (2026-08-20 観察)"
+    ],
+    "open_questions": []
+  },
+  {
+    "page_id": "topic-変更履歴",
+    "page_type": "topics",
+    "title": "変更履歴",
+    "path": "topics/変更履歴.md",
+    "summary": "2026-08-20: 「呼称」セクションを追加し、リポジトリの呼称(personal hub)を記録",
+    "tags": [
+      "変更履歴"
+    ],
+    "aliases": [
+      "変更履歴"
+    ],
+    "links": [
+      {
+        "relation": "relates_to",
+        "target_page_id": "people-self-facts",
+        "target_path": "people_self/facts.md",
+        "confidence": 0.9,
+        "source": "token_overlap:hub,personal,「呼称」セクションを追加し,を記録"
+      },
+      {
+        "relation": "derived_from",
+        "target_page_id": "data/llm_wiki/sources/memories/facts.md",
+        "target_path": "data/llm_wiki/sources/memories/facts.md",
+        "confidence": 1.0,
+        "source": "source_ref"
+      },
+      {
+        "relation": "relates_to_topic",
+        "target_page_id": "topic-呼称",
+        "target_path": "topics/呼称.md",
+        "confidence": 1.0,
+        "source": "shared_source:data/llm_wiki/sources/memories/facts.md"
+      }
+    ],
+    "source_refs": [
+      {
+        "source_type": "memories",
+        "source_path": "data/llm_wiki/sources/memories/facts.md",
+        "anchor": "変更履歴"
+      }
+    ],
+    "metadata": {
+      "record_count": 1,
+      "source_layers": [
+        "memories"
+      ],
+      "canonical_title": "変更履歴"
+    },
+    "key_facts": [
+      "2026-08-20: 「呼称」セクションを追加し、リポジトリの呼称(personal hub)を記録"
+    ],
+    "open_questions": []
+  },
+  {
+    "page_id": "index-topics",
+    "page_type": "index",
+    "title": "Topics Index",
+    "path": "topics/_index.md",
+    "summary": "topics pages: 3",
+    "tags": [
+      "topics",
+      "index"
+    ],
+    "aliases": [
+      "topics"
+    ],
+    "links": [
+      {
+        "relation": "index_of",
+        "target_page_id": "topic-design-notes",
+        "target_path": "topics/design-notes.md",
+        "confidence": 1.0,
+        "source": "index"
+      },
+      {
+        "relation": "index_of",
+        "target_page_id": "topic-呼称",
+        "target_path": "topics/呼称.md",
+        "confidence": 1.0,
+        "source": "index"
+      },
+      {
+        "relation": "index_of",
+        "target_page_id": "topic-変更履歴",
+        "target_path": "topics/変更履歴.md",
+        "confidence": 1.0,
+        "source": "index"
+      }
+    ],
+    "source_refs": [],
+    "metadata": {
+      "index_for": "topics",
+      "selection_rule": "sorted by title",
+      "page_count": 3
+    },
+    "key_facts": [
+      "Design notes: AI と人間の役割分担を明確にしたテンプレート構造にすると、運用の判断負荷が下がる。",
+      "呼称: このリポジトリ(life-management-agent / Personal Action OS)を「personal hub」と呼ぶ (2026-08-20 観察)",
+      "変更履歴: 2026-08-20: 「呼称」セクションを追加し、リポジトリの呼称(personal hub)を記録"
+    ],
+    "open_questions": []
+  },
+  {
+    "page_id": "index-people_self",
+    "page_type": "index",
+    "title": "People Self Index",
+    "path": "people_self/_index.md",
+    "summary": "people_self pages: 3",
+    "tags": [
+      "people_self",
+      "index"
+    ],
+    "aliases": [
+      "people_self"
+    ],
+    "links": [
+      {
+        "relation": "index_of",
+        "target_page_id": "people-self-facts",
+        "target_path": "people_self/facts.md",
+        "confidence": 1.0,
+        "source": "index"
+      },
+      {
+        "relation": "index_of",
+        "target_page_id": "people-self-preferences",
+        "target_path": "people_self/preferences.md",
+        "confidence": 1.0,
+        "source": "index"
+      },
+      {
+        "relation": "index_of",
+        "target_page_id": "people-self-user-context",
+        "target_path": "people_self/user_context.md",
+        "confidence": 1.0,
+        "source": "index"
+      }
+    ],
+    "source_refs": [],
+    "metadata": {
+      "index_for": "people_self",
+      "selection_rule": "sorted by title",
+      "page_count": 3
+    },
+    "key_facts": [
+      "Self Facts: ここには長期で参照価値がある個人的事実だけを追加する / このリポジトリ(life-management-agent / Personal Action OS)を「personal hub」と呼ぶ (2026-08-20 観察) / 2026-08-20: 「呼称」セクションを追加し、リポジトリの呼称(personal hub)を記録",
+      "Self Preferences: 箇条書きや短い段落を好む / 推測より事実ベースを優先する / このファイルには長期で効く対話スタイルや好みだけを残す",
+      "Self Context: 役割: / 主な関心: / 使用中のツール:"
+    ],
+    "open_questions": []
+  },
+  {
+    "page_id": "index-timelines",
+    "page_type": "index",
+    "title": "Timelines Index",
+    "path": "timelines/_index.md",
+    "summary": "timelines pages: 0",
+    "tags": [
+      "timelines",
+      "index"
+    ],
+    "aliases": [
+      "timelines"
+    ],
+    "links": [],
+    "source_refs": [],
+    "metadata": {
+      "index_for": "timelines",
+      "selection_rule": "sorted by title",
+      "page_count": 0
+    },
+    "key_facts": [],
+    "open_questions": []
+  }
+]

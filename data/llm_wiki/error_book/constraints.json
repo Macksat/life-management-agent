@@ -1,0 +1,6 @@
+{
+  "require_issue_next_action": true,
+  "require_issue_status": true,
+  "require_evidence": true,
+  "allow_weak_only_topics": false
+}

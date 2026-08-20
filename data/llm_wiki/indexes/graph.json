@@ -1,0 +1,107 @@
+{
+  "people_self/facts.md": [],
+  "people_self/preferences.md": [],
+  "people_self/user_context.md": [],
+  "topics/design-notes.md": [
+    {
+      "relation": "derived_from",
+      "target_page_id": "data/llm_wiki/sources/second_brain/digests/2026-01-01_design-notes.md",
+      "target_path": "data/llm_wiki/sources/second_brain/digests/2026-01-01_design-notes.md",
+      "confidence": 1.0,
+      "source": "source_ref"
+    }
+  ],
+  "topics/呼称.md": [
+    {
+      "relation": "relates_to",
+      "target_page_id": "people-self-facts",
+      "target_path": "people_self/facts.md",
+      "confidence": 0.95,
+      "source": "token_overlap:action,agent,hub」と呼ぶ,life"
+    },
+    {
+      "relation": "derived_from",
+      "target_page_id": "data/llm_wiki/sources/memories/facts.md",
+      "target_path": "data/llm_wiki/sources/memories/facts.md",
+      "confidence": 1.0,
+      "source": "source_ref"
+    },
+    {
+      "relation": "relates_to_topic",
+      "target_page_id": "topic-変更履歴",
+      "target_path": "topics/変更履歴.md",
+      "confidence": 1.0,
+      "source": "shared_source:data/llm_wiki/sources/memories/facts.md"
+    }
+  ],
+  "topics/変更履歴.md": [
+    {
+      "relation": "relates_to",
+      "target_page_id": "people-self-facts",
+      "target_path": "people_self/facts.md",
+      "confidence": 0.9,
+      "source": "token_overlap:hub,personal,「呼称」セクションを追加し,を記録"
+    },
+    {
+      "relation": "derived_from",
+      "target_page_id": "data/llm_wiki/sources/memories/facts.md",
+      "target_path": "data/llm_wiki/sources/memories/facts.md",
+      "confidence": 1.0,
+      "source": "source_ref"
+    },
+    {
+      "relation": "relates_to_topic",
+      "target_page_id": "topic-呼称",
+      "target_path": "topics/呼称.md",
+      "confidence": 1.0,
+      "source": "shared_source:data/llm_wiki/sources/memories/facts.md"
+    }
+  ],
+  "topics/_index.md": [
+    {
+      "relation": "index_of",
+      "target_page_id": "topic-design-notes",
+      "target_path": "topics/design-notes.md",
+      "confidence": 1.0,
+      "source": "index"
+    },
+    {
+      "relation": "index_of",
+      "target_page_id": "topic-呼称",
+      "target_path": "topics/呼称.md",
+      "confidence": 1.0,
+      "source": "index"
+    },
+    {
+      "relation": "index_of",
+      "target_page_id": "topic-変更履歴",
+      "target_path": "topics/変更履歴.md",
+      "confidence": 1.0,
+      "source": "index"
+    }
+  ],
+  "people_self/_index.md": [
+    {
+      "relation": "index_of",
+      "target_page_id": "people-self-facts",
+      "target_path": "people_self/facts.md",
+      "confidence": 1.0,
+      "source": "index"
+    },
+    {
+      "relation": "index_of",
+      "target_page_id": "people-self-preferences",
+      "target_path": "people_self/preferences.md",
+      "confidence": 1.0,
+      "source": "index"
+    },
+    {
+      "relation": "index_of",
+      "target_page_id": "people-self-user-context",
+      "target_path": "people_self/user_context.md",
+      "confidence": 1.0,
+      "source": "index"
+    }
+  ],
+  "timelines/_index.md": []
+}
